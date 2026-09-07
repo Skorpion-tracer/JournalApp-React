@@ -1,0 +1,51 @@
+.input {
+    width: 100%;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-family: 'Source Sans 3', sans-serif;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #646464;
+    transition: border-bottom 0.25s;
+}
+
+.input:hover {
+    border-bottom: 1px solid white;
+}
+
+.input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.inputDate {
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+}
+
+.inputEmpty {
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+}
+
+.inputEmpty::placeholder {
+    color: white;
+}
+
+.invalid {
+    border: 1px solid red;
+    background: #360000;
+}

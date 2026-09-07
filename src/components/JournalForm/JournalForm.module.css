@@ -1,0 +1,85 @@
+.journal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.headerForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconForm {
+    width: 30px;
+    height: 30px;
+}
+
+.formDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemFormDetails {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid #696969;
+    height: 60px;
+    gap: 100px;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 100px;
+}
+
+.labelText {
+    font-size: 17px;
+    color: #777777;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.descriptionText {
+    height: 500px;
+    font-size: 20px;
+    resize: none;
+    width: 100%;
+    font-weight: 600;
+    line-height: normal;
+    font-family: 'Source Sans 3', sans-serif;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #646464;
+    transition: border-bottom 0.25s;
+}
+
+.descriptionText:hover {
+    border-bottom: 1px solid white;
+}
+
+.descriptionText:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.invalid {
+    border: 1px solid red;
+    background: #360000;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}

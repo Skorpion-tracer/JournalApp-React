@@ -1,0 +1,17 @@
+import CardButton from '../CardButton/CardButton.jsx';
+import './JournalAddButton.css';
+
+function JournalAddButton({children}) {
+    return (
+        <CardButton className="journal-add">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 1V13" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M13 7L1 7" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+
+            Новое воспоминание
+        </CardButton>
+    );
+}
+
+export default JournalAddButton;
