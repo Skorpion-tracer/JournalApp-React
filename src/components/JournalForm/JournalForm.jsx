@@ -1,12 +1,13 @@
 import styles from './JournalForm.module.css';
 import Button from '../Button/Button.jsx';
-import {useContext, useEffect, useReducer, useRef} from 'react';
+import {memo, useContext, useEffect, useReducer, useRef} from 'react';
 import cn from 'classnames';
 import {formReducer, INITIAL_STATE} from './JournalFrom.state.js';
 import Input from '../Input/Input.jsx';
 import {UserContext} from '../../context/user.context.jsx';
 
-function JournalForm({onSubmit, data}) {
+function JournalForm({onSubmit, data, deleteItem}) {
+    console.log('JournalForm');
 
     const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
     const {isValid, isFormReadyToSubmit, values} = formState;
@@ -30,6 +31,10 @@ function JournalForm({onSubmit, data}) {
     };
 
     useEffect(() => {
+        if (!data) {
+            dispatchForm({type: 'CLEAR'});
+            dispatchForm({type: 'SET_VALUE', payload: {userId}});
+        }
         dispatchForm({type: 'SET_VALUE', payload: {...data}});
     }, [data]);
 
@@ -48,6 +53,7 @@ function JournalForm({onSubmit, data}) {
 
     useEffect(() => {
         if (isFormReadyToSubmit) {
+            console.log('JournalForm onSubmit');
             onSubmit(values);
             dispatchForm({type: 'CLEAR'});
             dispatchForm({type: 'SET_VALUE', payload: {userId}});
@@ -67,13 +73,24 @@ function JournalForm({onSubmit, data}) {
         dispatchForm({type: 'SUBMIT'});
     };
 
+    const deleteJournalItem = () => {
+        if (data && data.id) {
+            deleteItem(data.id);
+            dispatchForm({type: 'CLEAR'});
+            dispatchForm({type: 'SET_VALUE', payload: {userId}});
+        }
+    };
+
     return (
 
         <form className={styles['journal-form']} onSubmit={addJournalItem}>
             <div className={cn(styles.headerForm)}>
                 <Input type="text" ref={titleRef} isValid={isValid.title} value={values.title} onChange={onChange}
                        name="title" appearance="title"/>
-                <img className={cn(styles.iconForm)} src="/title.svg" alt="иконка"/>
+                {data?.id &&
+                    <button className={styles.buttonDelete} onClick={deleteJournalItem} type="button">
+                        <img className={cn(styles.iconForm)} src="/title.svg" alt="кнопка удалить"/>
+                    </button>}
             </div>
             <div className={cn(styles.formDetails)}>
                 <div className={cn(styles.itemFormDetails)}>
@@ -100,4 +117,4 @@ function JournalForm({onSubmit, data}) {
     );
 }
 
-export default JournalForm;
+export default memo(JournalForm);
