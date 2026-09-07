@@ -7,7 +7,7 @@ import JournalAddButton from './components/JournalAddButton/JournalAddButton.jsx
 import JournalForm from './components/JournalForm/JournalForm.jsx';
 import {useLocalstorage} from './hooks/use-localstorage.hook.js';
 import {UserContextProvider} from './context/user.context.jsx';
-import {useCallback, useState} from 'react';
+import {useState} from 'react';
 
 function mapItems(items) {
     if (!items) {
